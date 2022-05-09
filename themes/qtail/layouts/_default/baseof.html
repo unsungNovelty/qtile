@@ -5,7 +5,7 @@
     <head>{{ partial "head.html" . }}</head>
 
   
-    <body class="m-0 p-0">   
+    <body class="max-w-full min-w-full">   
         
         <!-- Loads the header template. -->
         <header>
@@ -14,7 +14,7 @@
         
         <!-- Loads the main block of a markdown file. -->
         <article>
-            <section class="">{{- block "main" . }}{{- end }}</section>
+            <section>{{- block "main" . }}{{- end }}</section>
         </article>
 
 
