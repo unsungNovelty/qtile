@@ -6,12 +6,25 @@
                 <p class="text-lg">{{ .Params.description }}</p>
             </div>
         </header>
+
+        <section class="flex flex-col gap-4 mx-8 lg:mx-80 lg:flex-row my-2 py-2">
+            <div class="p-4 border rounded w-2/5 h-48">
+                <h4 class="text-xl font-semibold">See more config examples</h4>
+                <p>Be sure to check out qtile-examples on Github for more examples of how to configure Qtile.</p>
+            </div>
+            <div class="p-4 border rounded w-2/5 h-48">
+                <h4 class="text-xl font-semibold">Add your screenshot</h4>
+                <p>Want to show off how you've customized Qtile?</p>
+                <p>Send a pull request to qtile.org on Github, and we'll get your screenshot and config added.</p>
+            </div>
+        </section>
     
         <section class="mx-8 lg:mx-80 py-4">
             <ul>
                 <li> 
                     <div class="flex flex-col flex-wrap lg:flex-row gap-4 place-items-center">
-                        <!-- Iterate through pages and diplays it as links in the order of publish date and the title of the page. -->
+                        
+                        <!-- Iterate through screenshots and show them as a grid -->
                         {{ range .Pages }}
                             
                             <div class="h-64 w-80 p-2 border shadow rounded">
