@@ -1,49 +1,15 @@
 {{ define "main" }}
 
-    <main>
-        <article class="text-lg mx-8 lg:mx-80">      
-            <header>
-                <h2>{{ .Title }}</h2>
-            </header>
+    {{ if eq .Section "screenshots" }}
         
-            <section class="">
-                <ul>
-                    <li> 
-                        <div class="flex flex-col flex-wrap lg:flex-row gap-4 place-items-center">
-
-                            <!-- Iterate through pages and diplays it as links in the order of publish date and the title of the page. -->
-                            {{ range .Pages }}
-                                
-                                <div class="h-64 w-80 p-2 border shadow rounded">
-                                    
-                                    <!-- If "screenshot:" frontmatter is set in the markdown file, display image -->
-                                    {{ if .Params.screenshot }}
-                                        
-                                        <!-- Find image from "screenshot" frontmatter(.Params) provided from subsequent markdown file. -->
-                                        {{ $image := resources.GetMatch .Params.screenshot }}
-                                        <!-- Use Hugo image processing method of "Fit" to fit the image in the thumbnail  -->
-                                        {{ $image := $image.Fit "320x256 webp"}}
-                                        <img class="w-full h-[75%] rounded aspect-square 
-                                            lg:hover:scale-150 lg:hover:transition lg:hover:ease-linear lg:hover:delay-100 hover:border-2 hover:border-blue-600" 
-                                            src="{{ $image.RelPermalink }}" alt="{{ .Params.description }}" height="24" width="24"
-                                        >
-                                    
-                                    {{ end }}
-
-                                    <!-- Buttons to the links for viewing the configuration file and screenshot  -->
-                                    <div class="p-2 grid h-[25%] max-w-full grid-flow-col gap-2 items-center">
-                                        <a class="p-2 h-fit text-center rounded border hover:bg-[#1B1B1B] hover:text-white" href="{{ .Params.config }}">Config</a>
-                                        <a class="p-1.5 h-fit text-center rounded border hover:bg-[#1B1B1B] hover:text-white" href="{{ .Params.screenshot }}">Screenshot</a>
-                                    </div>
-                                </div>
-                            
-                            {{ end }}
-                        
-                        </div>      
-                    </li>
-                </ul>
-            </section>
-        </article>
-    </main>
+        <!-- Load list template for projects section -->
+        {{- partial "components/list-pages/screenshots-list.html" . -}}
+    
+    {{ else }}
+    
+        <!-- Load default list template -->
+        {{ partial "components/list-pages/default-list.html" . }}
+    
+    {{ end }}
 
 {{ end }}
